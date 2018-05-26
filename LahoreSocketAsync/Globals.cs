@@ -10,6 +10,6 @@ namespace LahoreSocketAsync
     {
         public const string cmd_new_message = "new_message";
         public const string cmd_update_users_list = "update_users_list";
-        public const string server_name = "Server Allahu Akbar";
+        public const string server_name = "Server";
     }
 }

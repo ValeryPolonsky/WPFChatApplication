@@ -42,22 +42,25 @@ namespace WPFServer
         private void btnAcceptIncomingConnections_Click(object sender, RoutedEventArgs e)
         {
             mServer.StartListeningForIncomingConnection();
+            txtConsole.AppendText(string.Format("<<{0}>> - Server started listening for incoming connections{1}", DateTime.Now,Environment.NewLine));
         }
 
         private void btnStopServer_Click(object sender, RoutedEventArgs e)
         {
             mServer.StopServer();
+            txtConsole.AppendText(string.Format("<<{0}>> - Server stopped listening for incoming connections{1}",DateTime.Now,Environment.NewLine));
         }
 
         private void btnSendToAll_Click(object sender, RoutedEventArgs e)
         {
-            SocketDataTransfer socketDataTransfer = new SocketDataTransfer("server","new_message", txtMessage.Text.Trim());
+            SocketDataTransfer socketDataTransfer = new SocketDataTransfer(Globals.server_name,"new_message", txtMessage.Text.Trim());
             mServer.SendToAll(socketDataTransfer);
+            txtConsole.AppendText(string.Format("<<{0}>> - Message from ({1}): {2}{3}",DateTime.Now,Globals.server_name,txtMessage.Text.Trim(),Environment.NewLine));
         }
 
         void HandleClientConnected(object sender, ClientConnectedEventsArgs ccea)
-        {
-            txtConsole.AppendText(string.Format("{0} - New client connected: {1}{2}", DateTime.Now, ccea.NewClient, Environment.NewLine));
+        {         
+            txtConsole.AppendText(string.Format("<<{0}>> - New client connected: Name:{1}, IP:{2}, Port:{3}{4}",DateTime.Now,ccea.UserName,ccea.IPAddress,ccea.Port,Environment.NewLine));
         }
 
         void HandleSocketTransferDataReceived(object sender,SocketDataTransferEventsArgs sdtea)
@@ -68,20 +71,13 @@ namespace WPFServer
         void HandleClientDisconnected(object sender,ClientDisconnectedEventsArgs cdea)
         {
             proceedClientDisconnectedEvent(cdea.connected_users);
-        }
-
-        //void HandleTextReceived(object sender, TextReceivedEventsArgs trea)
-        //{
-        //    txtConsole.AppendText(string.Format("{0} - Received from {3}: {1}{2}", DateTime.Now, trea.TextReceived, Environment.NewLine, trea.ClientWhoSentText));
-        //    //mServer.SendToAll(trea.TextReceived);
-        //}
+        }       
 
         private void proceedSocketData(SocketDataTransfer socketDataTransfer)
         {
             if (socketDataTransfer.command == Globals.cmd_new_message)
-            {
-                txtConsole.AppendText(socketDataTransfer.user_name + ": " + socketDataTransfer.message + Environment.NewLine);
-                //socketDataTransfer.tcp_client = null;
+            {              
+                txtConsole.AppendText(string.Format("<<{0}>> - Message from ({1}): {2}{3}",DateTime.Now,socketDataTransfer.user_name,socketDataTransfer.message,Environment.NewLine));
                 mServer.SendToAll(socketDataTransfer);
             }
 

@@ -103,9 +103,7 @@ namespace LahoreSocketAsync
 
                     TakeCareOfTCPClient(returnedByAccept);                   
 
-                    ClientConnectedEventsArgs eaClientConnected;
-                    eaClientConnected = new ClientConnectedEventsArgs(returnedByAccept.Client.RemoteEndPoint.ToString());
-                    OnRaiseClientConnectedEvent(eaClientConnected);
+                    
                 }
             }
             catch(Exception ex)
@@ -215,6 +213,16 @@ namespace LahoreSocketAsync
                     if(socketDataTransfer.command==Globals.cmd_update_users_list)
                     {
                         connected_user_to_socket_map[socketDataTransfer.user_name] = paramClient;
+
+                        string UserIPAddress, UserPort, UserName;
+                        ClientConnectedEventsArgs eaClientConnected;
+                        UserIPAddress = ((IPEndPoint)paramClient.Client.RemoteEndPoint).Address.ToString();
+                        UserPort = ((IPEndPoint)paramClient.Client.RemoteEndPoint).Port.ToString();
+                        UserName = socketDataTransfer.user_name;
+
+                        //eaClientConnected = new ClientConnectedEventsArgs(paramClient.Client.RemoteEndPoint.ToString());
+                        eaClientConnected = new ClientConnectedEventsArgs(UserIPAddress, UserPort, UserName);
+                        OnRaiseClientConnectedEvent(eaClientConnected);                      
                     }
                     OnRaiseSocketDataTransferEvent(new SocketDataTransferEventsArgs(socketDataTransfer));
                     Array.Clear(buff, 0, buff.Length);
@@ -301,6 +309,16 @@ namespace LahoreSocketAsync
         //        Debug.WriteLine(ex.ToString());
         //    }
         //}
+
+        public string getIP()
+        {
+            return mIP.ToString();
+        }
+
+        public string getPort()
+        {
+            return mPort.ToString();
+        }
 
         public List<string>getConnectedUsers()
         {

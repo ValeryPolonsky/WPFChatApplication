@@ -28,7 +28,7 @@ namespace WPFClient
         {
             client_name = "";
             InitializeComponent();
-            connectClient();
+            //connectClient();
         }
 
         //Some very good shit added
@@ -89,6 +89,7 @@ namespace WPFClient
         {
             client_name = txtName.Text;
             SocketDataTransfer socketDataTransfer = new SocketDataTransfer(client_name, Globals.cmd_update_users_list, client_name);
+            connectClient();
             client.SendToServer(socketDataTransfer);
         }
 
@@ -96,7 +97,8 @@ namespace WPFClient
         {
             if(socketDataTransfer.command==Globals.cmd_new_message)
             {
-                txtMessagesList.AppendText(socketDataTransfer.user_name+": "+socketDataTransfer.message+Environment.NewLine);
+                //txtMessagesList.AppendText(socketDataTransfer.user_name+": "+socketDataTransfer.message+Environment.NewLine);
+                txtMessagesList.AppendText(string.Format("<<{0}>> - {1}: {2}{3}",DateTime.Now,socketDataTransfer.user_name,socketDataTransfer.message,Environment.NewLine));
             }
             if(socketDataTransfer.command==Globals.cmd_update_users_list)
             {

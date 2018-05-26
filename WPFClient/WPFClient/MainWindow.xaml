@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFClient"
         mc:Ignorable="d"
-        Title="Client" Height="450" Width="850" Background="{StaticResource LightBackground}">
+        Title="Client" Height="500" Width="1000" Background="{StaticResource LightBackground}">
 
    
 
@@ -19,7 +19,7 @@
             <ColumnDefinition Width="110" />
             <ColumnDefinition Width="310*" />
             <ColumnDefinition Width="150*" />
-            <ColumnDefinition Width="200*" />
+            <ColumnDefinition Width="200" />
         </Grid.ColumnDefinitions>
         <RichTextBox Grid.ColumnSpan="3" Grid.Row="0" Grid.Column="0" x:Name="txtMessagesList" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,0,5" ScrollViewer.VerticalScrollBarVisibility="Auto" IsReadOnly="True" FontSize="15">
             <RichTextBox.Resources>

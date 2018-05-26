@@ -11,11 +11,22 @@ namespace LahoreSocketAsync
 {
     public class ClientConnectedEventsArgs : EventArgs
     {
-        public string NewClient { get; set; }
+        //public string NewClient { get; set; }
 
-        public ClientConnectedEventsArgs(string _newClient)
+        //public ClientConnectedEventsArgs(string _newClient)
+        //{
+        //    NewClient = _newClient;
+        //}
+
+        public string IPAddress { get; set; }
+        public string Port { get; set; }
+        public string UserName { get; set; }
+
+        public ClientConnectedEventsArgs(string IPAddress,string Port,string UserName)
         {
-            NewClient = _newClient;
+            this.IPAddress = IPAddress;
+            this.Port = Port;
+            this.UserName = UserName;
         }
     }
 
