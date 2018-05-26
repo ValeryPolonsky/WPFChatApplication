@@ -31,6 +31,8 @@ namespace WPFClient
             connectClient();
         }
 
+        //Some very good shit added
+
         private void connectClient()
         {
             client = new LahoreSocketClient();
