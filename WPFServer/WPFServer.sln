@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2000
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFServer", "WPFServer\WPFServer.csproj", "{D63E529A-2ABD-49A4-9152-27953A850738}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LahoreSocketAsync", "..\LahoreSocketAsync\LahoreSocketAsync.csproj", "{990742EE-D23D-4E15-8618-C1B6BC51B9DB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D63E529A-2ABD-49A4-9152-27953A850738}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D63E529A-2ABD-49A4-9152-27953A850738}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D63E529A-2ABD-49A4-9152-27953A850738}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D63E529A-2ABD-49A4-9152-27953A850738}.Release|Any CPU.Build.0 = Release|Any CPU
+		{990742EE-D23D-4E15-8618-C1B6BC51B9DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{990742EE-D23D-4E15-8618-C1B6BC51B9DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{990742EE-D23D-4E15-8618-C1B6BC51B9DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{990742EE-D23D-4E15-8618-C1B6BC51B9DB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2D40AD76-9D68-4B53-BCAF-1C3E87F40CC5}
+	EndGlobalSection
+EndGlobal
